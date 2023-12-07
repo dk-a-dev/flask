@@ -54,7 +54,7 @@ def register():
                 return redirect(url_for("auth.login"))
 
         flash(error)
-    return render_template("register.html")
+    return render_template("auth/register.html")
 
 
 @bp.route("/login", methods=["GET", "POST"])
@@ -77,7 +77,7 @@ def login():
             return redirect(url_for("index"))
 
         flash(error)
-    return render_template("login.html")
+    return render_template("auth/login.html")
 
 
 @bp.route("logout")
