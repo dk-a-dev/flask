@@ -33,7 +33,6 @@ def register():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        email = request.form["email"]
         db = get_db()
         error = None
 
@@ -41,14 +40,12 @@ def register():
             error = "Username is required"
         elif not password:
             error = "Password is required"
-        elif not email:
-            error = "Email is required"
 
         if error is None:
             try:
                 db.execute(
-                    "INSERT INTO user(email,username,password) VALUES (?,?,?)",
-                    (email, username, generate_password_hash(password)),
+                    "INSERT INTO user(username,password) VALUES (?,?)",
+                    (username, generate_password_hash(password)),
                 )
                 db.commit()
             except db.IntegrityError:
@@ -57,22 +54,22 @@ def register():
                 return redirect(url_for("auth.login"))
 
         flash(error)
-    return render_template("auth/register.html")
+    return render_template("register.html")
 
 
 @bp.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        email = request.form["email"]
+        username = request.form["username"]
         password = request.form["password"]
         db = get_db()
         error = None
-        user = db.execute("SELECT *FROM user WHERE email=?", (email,)).fetchone()
+        user = db.execute("SELECT *FROM user WHERE username=?", (username,)).fetchone()
 
         if user is None:
-            error = "No user with this email"
+            error = "No user with this username"
         elif not check_password_hash(user["password"], password):
-            error = f'Incorrect password for {user["email"]}'
+            error = f'Incorrect password for {user["username"]}'
 
         if error is None:
             session.clear()
@@ -80,7 +77,7 @@ def login():
             return redirect(url_for("index"))
 
         flash(error)
-    return render_template("auth/login.html")
+    return render_template("login.html")
 
 
 @bp.route("logout")
