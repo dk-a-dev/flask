@@ -1,0 +1,15 @@
+<!-- templates/capsule/show.html -->
+{% extends 'base.html' %}
+
+{% block title %}Your Capsule{% endblock %}
+
+{% block content %}
+  {% if capsule %}
+    <h2>Your Current Capsule</h2>
+    <p>{{ capsule['content'] }}</p>
+    <p>Song: {{ capsule['song_name'] }}</p>
+    {% if capsule['embedded_link'] %}
+      <iframe width="560" height="315" src="{{ capsule['embed_link'] }}" frameborder="0" allowfullscreen></iframe>
+    {% endif %}
+  {% endif %}
+{% endblock %}

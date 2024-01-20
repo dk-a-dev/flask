@@ -1,0 +1,20 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Capsule Project{% endblock %}
+
+{% block content %}
+  <h2>Welcome to the Capsule Project</h2>
+  <p>
+    This project allows you to create time capsules with a personalized message and a song of your choice. After 24 hours, the system will surprise you by embedding the song along with your message.
+  </p>
+
+  <h3>About IEEE</h3>
+  <p>
+    The Institute of Electrical and Electronics Engineers (IEEE) is a professional association for electronic engineering and electrical engineering. Visit the IEEE website for more information: <a href="https://www.ieee.org/" target="_blank">IEEE Website</a>.
+  </p>
+
+    <a href="{{url_for('capsule.create')}}">Create Capsule</a><br>
+    <a href="{{url_for('capsule.show_capsule')}}">Show Capsule</a>
+  
+{% endblock %}

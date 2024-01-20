@@ -1,0 +1,17 @@
+<!-- templates/capsule/create.html -->
+{% extends 'base.html' %}
+
+{% block title %}Create Capsule{% endblock %}
+
+{% block content %}
+  <h2>Create Your Time Capsule</h2>
+  <form method="post">
+    <label for="content">Message:</label>
+    <textarea id="content" name="content" required></textarea>
+
+    <label for="song_name">Song Name:</label>
+    <input type="text" id="song_name" name="song_name" required>
+
+    <button type="submit">See You Tomorrow</button>
+  </form>
+{% endblock %}

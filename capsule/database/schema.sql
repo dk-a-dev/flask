@@ -8,11 +8,11 @@ CREATE TABLE user(
     password TEXT NOT NULL
 );
 
-CREATE TABLE message(
+CREATE TABLE capsule(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     content TEXT NOT NULL,
     song_name TEXT NOT NULL,
-    date_posted TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    embed_link TEXT,
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
