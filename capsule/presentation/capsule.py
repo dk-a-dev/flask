@@ -32,7 +32,7 @@ def scrap_yt(song_name):
         # else return the link
         url = "https://www.youtube.com/results?search_query=" + song_name
         response = requests.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(response.text, "html.parser")  
         video_link = soup.find("a", {"class": "yt-simple-endpoint"})["href"]
         embedded_link = f"https://www.youtube.com/embed{video_link}"
         return embedded_link
