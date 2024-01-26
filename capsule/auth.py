@@ -11,7 +11,7 @@ from flask import (
     url_for,
 )
 from werkzeug.security import check_password_hash, generate_password_hash
-from blogsite.database.db import get_db
+from capsule.db import get_db
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 

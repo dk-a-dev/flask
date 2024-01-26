@@ -1,15 +1,21 @@
 <!-- templates/capsule/show.html -->
 {% extends 'base.html' %}
-
 {% block title %}Your Capsule{% endblock %}
-
 {% block content %}
+  <h2>Your Capsule</h2>
+
   {% if capsule %}
-    <h2>Your Current Capsule</h2>
-    <p>{{ capsule['content'] }}</p>
-    <p>Song: {{ capsule['song_name'] }}</p>
-    {% if capsule['embedded_link'] %}
+    <p><strong>Content:</strong> {{ capsule['content'] }}</p>
+    <p><strong>Song:</strong> {{ capsule['song_name'] }}</p>
+
+    {% if capsule['embed_link'] %}
       <iframe width="560" height="315" src="{{ capsule['embed_link'] }}" frameborder="0" allowfullscreen></iframe>
+    {% else %}
+      <p>Your surprise is not ready yet. Please check back later.</p>
     {% endif %}
+
+  {% else %}
+    <p>No capsule found for the current user.</p>
   {% endif %}
+  
 {% endblock %}

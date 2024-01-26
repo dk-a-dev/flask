@@ -1,9 +1,9 @@
 import os
 
 from flask import Flask
-from .database import db
-from .auth import auth
-from .presentation import capsule
+from . import db
+from . import auth
+from . import capsule
 
 def create_app(test_config=None):
     # create and configure the app
